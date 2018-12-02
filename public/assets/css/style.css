@@ -1,0 +1,30 @@
+.navbar-default {
+    background-color: black;
+    font-family:times;
+    color:white;
+    border:0px;
+    border-radius:0px;
+    margin:0px;
+
+}
+  .navbar-default .navbar-nav > li > a {
+   color: white; /*Change active text color here*/
+   font-weight:bold;
+   border:0px;
+    }
+   .navbar-default .navbar-brand {
+    color: white;
+}
+.jumbotron{
+
+	background-image: url("/public/assets/img/newspaper.jpeg");
+	 background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+	color:white;
+  height: 500px;
+	text-shadow:2px 1px black;
+}
+a{
+  color:orange;
+}
