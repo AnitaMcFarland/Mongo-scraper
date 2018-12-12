@@ -1,37 +1,37 @@
 var express = require("express");
-var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
+var bodyParser = require("body-parser");
+var expressHandlebars = require("express-handlebars");
 
-mongoose.Promise = Promise;
+var PORT = process.env.PORT || 3000;
 
 var app = express();
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(express.static("public"));
 
-var exphbs = require("express-handlebars");
+var router = express.Router();
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+require("./config/routes")(router);
+
+app.use(express.static(__dirname + "/public"));
+
+app.engine("handlebars", expressHandlebars({ defaultLayout: "main" }));
+
 app.set("view engine", "handlebars");
 
-require("./routes/api-routes.js")(app);
+app.use(bodyParser.urlencoded({extended: false}));
 
-//Database configuration with mongoose
-mongoose.connect("mongodb://localhost/myscraperdb2");
-var db = mongoose.connection;
+app.use(router);
 
-//show any mongoose errors
-db.on("error", function(error){
-	console.log("Mongoose Error: ", error);
-});
-db.once("open", function() {
-	console.log("Mongoose connection Successful");
+var db = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+mongoose.connect(db, function(error){
+    if (error) {
+        console.log("mongoose connection is successful");
+
+    }
 });
 
-require("./routes/api-routes.js")(app);
 
 
-//listen on port 3001
-var port = process.env.Port || 3000;
-app.listen(port, function(){
-	console.log("App running on port 3000");
+
+app.listen(PORT, function(){
+    console.log("Listening on port:" + PORT);
 });
