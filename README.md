@@ -26,21 +26,19 @@ Mongo-Scraper
 
 **Example:
 
-![App screenshot]![index.handlebars](public/assets/img/screenshot.png)
-
 **Technologies used:**
 >cheerio
 >express  
 >github  
 >heroku  
 >handlebars
->mongo 
+>mongo
 >javascript  
 >bootstrap
 
 **How did it run?**
-(The app interface works well.) All buttons connect and allow the user to pull up articles and to add a new note.
-![submit]![Submit Order](public/assets/img/submitorder.png)
+(The app interface does not work.) Cannot scrape articles.
+
 Mongo-Scraper is an app to pull articles and submit a note about the article.
 
 Anita McFarland
